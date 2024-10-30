@@ -1,0 +1,51 @@
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.logo-img {
+    width: 130px; /* Adjust the logo size as needed */
+}
+
+.navbar {
+    display: flex;
+    gap: 30px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.navbar a {
+    font-family: 'Ekstra', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+
+.navbar a:hover {
+    color: #007bff;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
