@@ -1,8 +1,9 @@
 header {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    margin: 20px 40px;
     background-color: #ffffff;
+    justify-content: space-between;
 }
 
 .logo {
@@ -13,16 +14,26 @@ header {
     width: 130px; /* Adjust the logo size as needed */
 }
 
+nav ul{
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        list-style: none;
+        gap: 30px;
+}
+
+nav ul li{
+display: flex;
+align-items: center;
+}
+
 .navbar {
     display: flex;
-    gap: 30px;
-    flex-grow: 1;
     justify-content: center;
 }
 
 .navbar a {
-    font-family: 'Ekstra', sans-serif;
-    font-weight: bold;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     color: #000;
     text-transform: uppercase;
