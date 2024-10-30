@@ -1,3 +1,5 @@
+/* Header */
+
 header {
     display: flex;
     align-items: center;
@@ -7,11 +9,12 @@ header {
 }
 
 .logo {
-    margin-right: auto;
+    margin-right: 3rem;
+
 }
 
 .logo-img {
-    width: 130px; /* Adjust the logo size as needed */
+    width: 150px; /* Adjust the logo size as needed */
 }
 
 nav ul{
@@ -19,7 +22,7 @@ nav ul{
         justify-content: center;
         text-decoration: none;
         list-style: none;
-        gap: 30px;
+        gap: 40px;
 }
 
 nav ul li{
@@ -59,4 +62,78 @@ align-items: center;
 
 .icon:hover {
     transform: scale(1.1);
+}
+
+/* Footer */
+
+
+footer {
+    background-color: #000000;
+    padding: 20px 0;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.footerGrid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footerSection {
+    flex: 1;
+    margin: 10px;
+}
+
+.footerLogo {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+.footerSection h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-decoration-line: underline;
+
+}
+
+.footerSection p, .footerSection ul, .footerSection a {
+    font-size: 14px;
+    color: #bdbdbd;
+    text-decoration: none;
+}
+
+.footerSection ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footerSection ul li {
+    margin-bottom: 5px;
+}
+
+.footerSection ul li a:hover {
+    text-decoration: underline;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 10px;
+}
+
+.socialIcons a img {
+    width: 24px;
+    height: 24px;
+}
+
+.footerBottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #777;
 }
