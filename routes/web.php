@@ -2,7 +2,7 @@
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsController;
 
 
 /*
@@ -20,8 +20,12 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::get('/perfumes', [ProductController::class, 'products'])->name('product');
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
+    Route::resource('products', ProductsController::class);
+});
+
+Route::get('/perfumes', [ProductsController::class, 'products'])->name('product');
+
+
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
