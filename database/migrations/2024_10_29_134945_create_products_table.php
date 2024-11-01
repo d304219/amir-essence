@@ -10,8 +10,8 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id(); // Primary Key
             $table->string('name');
-            $table->decimal('price', 10, 2);
-            $table->integer('quantity');
+            $table->decimal('price', 10, 2)->default(0);
+            $table->integer('quantity')->default(0); // Set default value
             $table->integer('volume')->nullable();
             $table->text('description')->nullable();
             $table->text('ingredients')->nullable();
@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->timestamps();
         });
     }
+    
 
     public function down()
     {
