@@ -62,6 +62,7 @@
 /* Header */
 .page-header {
     display: flex;
+    flex-direction: column;
     align-items: baseline;
     justify-content: space-between;
     margin: 0 0 20px;
@@ -74,6 +75,8 @@
 }
 
 .product-info {
+    width: 100%;
+    justify-content: space-between;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -97,20 +100,18 @@
 /* Product Grid */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 40px;
 }
 
 .product-card {
-    padding: 20px;
-    text-align: center;
     border-radius: 8px;
     position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-card img {
-    width: 100%;
+    width: 70%;
     height: auto;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -120,6 +121,7 @@
 .product-img{
     width: 100%;
     background-color: #f9f9f9;
+    text-align: center
 }
 
 .product-card h3 {
