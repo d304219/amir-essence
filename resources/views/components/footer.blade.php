@@ -17,7 +17,7 @@
                 <h4>Links</h4>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="#show">Shop</a></li>
+                    <li><a href="#show">Perfumes</a></li>
                     <li><a href="#aboutus">About us</a></li>
                     <li><a href="#faq">Faq</a></li>
                 </ul>

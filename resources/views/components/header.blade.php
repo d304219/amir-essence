@@ -3,13 +3,13 @@
     <nav class="navbar">
 
         <div class="logo">
-            <a href="#home">
+            <a href="/">
                 <img src="{{ asset('img/logoLight.png') }}" alt="Logo" class="logo-img">
             </a>
         </div>
         <ul>
-            <li>        <a href="#home">Home</a></li>
-            <li>        <a href="#shop">Shop</a></li>
+            <li>        <a href="/">Home</a></li>
+            <li>        <a href="perfumes">Perfumes</a></li>
             <li>        <a href="#about">About Us</a></li>
         </ul>
     <!-- Navigation in the center -->
