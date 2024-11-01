@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
         $product->volume = 100; // in ml
         $product->description = "A luxurious oud fragrance with a royal touch, perfect for evening wear.";
         $product->ingredients = "Oud, sandalwood, amber, musk";
-        $product->img_file = "royal_oud.jpg";
+        $product->img_file = "perfume-mockup.png";
         $product->category_id = 1; // Set category_id to match the ID of "Royal Oud" category
         $product->save();
 
