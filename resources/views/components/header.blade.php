@@ -17,8 +17,8 @@
 
     <!-- Icons on the right -->
     <div class="header-icons">
-        <a href="#profile">
-            <i class="fa-solid fa-user" style="color: #000000;"></i>        </a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
         <a href="#cart">
             <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>        </a>
     </div>
