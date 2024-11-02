@@ -1,19 +1,19 @@
 
 <footer>
     <div class="wrapper">
-        <div class="footerGrid">
-            <div class="footerSection">
-                <img src="img/logoLight-removebg.png" alt="Curio Logo" class="footerLogo">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <img src="/img/logoLight-removebg.png" alt="Amir Essence" class="footer-logo">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptas impedit fuga facilis, repudiandae eligendi. Facilis odit magni excepturi nulla cumque incidunt neque asperiores deleniti accusamus temporibus esse, perferendis aliquid.</p>
             </div>
 
-            <div class="footerSection">
+            <div class="footer-section">
                 <h4>Contact</h4>
-                <p>Email: <a href="mailto:info@curio.nl">info@curio.nl</a></p>
+                <p>Email: <a href="#">info@amiressence.com</a></p>
                 <p>Tel: +31 76 523 88 00</p>
             </div>
 
-            <div class="footerSection">
+            <div class="footer-section">
                 <h4>Links</h4>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -23,9 +23,9 @@
                 </ul>
             </div>
 
-            <div class="footerSection">
+            <div class="footer-section">
                 <h4>Volg Ons</h4>
-                <div class="socialIcons">
+                <div class="social-icons">
                     <a href="https://www.facebook.com/groups/477785032270977/"><img src="img/facebook-icon.png" alt="Facebook"></a>
                     <a href="https://x.com/curioonderwijs?lang=en&mx=2"><img src="img/twitter-icon.png" alt="Twitter"></a>
                     <a href="https://www.instagram.com/curioonderwijsgroep/?hl=en"><img src="img/instagram-icon.png" alt="Instagram"></a>
@@ -34,8 +34,8 @@
             </div>
         </div>
 
-        <div class="footerBottom">
-            <p>&copy; 2024 Curio. Alle rechten voorbehouden.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Amir Essence. All Rights Reserved.</p>
         </div>
     </div>
 </footer>
