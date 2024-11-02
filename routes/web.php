@@ -26,6 +26,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
 Route::get('/perfumes', [ProductsController::class, 'products'])->name('product');
 
+Route::get('/perfumes/{id}', [ProductsController::class, 'show'])->name('product.show');
 
 
 Auth::routes();

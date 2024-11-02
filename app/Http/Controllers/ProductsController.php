@@ -78,7 +78,7 @@ class ProductsController extends Controller
     public function show(string $id)
     {
         $product = Product::findOrFail($id);
-        return view('dashboard/products/show')->with('product', $product);    
+        return view('show')->with('product', $product);    
     }
     /**
      * Show the form for editing the specified resource.
