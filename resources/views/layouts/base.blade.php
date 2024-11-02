@@ -8,12 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Amir Essence</title>
-    <link rel="icon" href="img/logoLight-removebg.png">
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ekstra:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/logoLight-removebg.png">
 
     <link href="/resources/css/app.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7fa65373f3.js" crossorigin="anonymous"></script>
