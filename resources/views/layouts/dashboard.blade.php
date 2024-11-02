@@ -9,9 +9,13 @@
 
 </head>
 <body>
+    <x-dashboard-header/>
+
     <div class="container">
         @yield('content')
     </div>
+
+    <x-dashboard-footer/>
 
 </body>
 </html>
