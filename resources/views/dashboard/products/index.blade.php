@@ -4,6 +4,25 @@
     <div class="wrapper">
         <h1>Dashboard</h1>
         <h2>Products Control</h2>
+
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        @if(session('info'))
+            <div class="alert alert-info">
+                {{ session('info') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <table class="table">
             <thead>
                 <tr>
@@ -20,7 +39,7 @@
             <tbody>
                 @foreach($products as $product)
                     <tr>
-                        <td><a href="{{route('products.show', $product->id)}}">{{$product->name}}</a></td>
+                        <td><a href="{{ route('products.edit', $product->id) }}">{{$product->name}}</a></td>
                         <td>€ {{$product->price}}</td>
                         <td>{{$product->quantity}}</td>
                         <td>{{$product->volume}}</td>
@@ -33,6 +52,19 @@
             </tbody>
         </table>
 
-        <a href="{{route('products.create')}}" class="btn btn-primary">Nieuw evenement aanmaken</a>
+        <a href="{{route('products.create')}}" class="btn btn-primary">Make new Product</a>
     </div>
+
+    <script>
+        // Auto-dismiss alert after 3 seconds
+        setTimeout(() => {
+            const alert = document.querySelector('.alert');
+            if (alert) {
+                alert.style.transition = 'opacity 0.8s ease';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 1000);
+            }
+        }, 3000);
+    </script>
+    
 @endsection

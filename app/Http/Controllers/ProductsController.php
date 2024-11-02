@@ -28,7 +28,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('dashboard/products/create');
+        $categories = Category::all(); // Assuming you have a Category model
+        return view('dashboard/products/create')->with('categories', $categories);    
     }
 
     /**
@@ -64,6 +65,8 @@ class ProductsController extends Controller
         }
 
         $product->save();
+
+        session()->flash('success', 'Product created successfully!');
 
         return redirect()->route('products.index');
     
@@ -122,6 +125,8 @@ class ProductsController extends Controller
 
         $product->save();
 
+        session()->flash('info', 'Product updated successfully!');
+
         return redirect()->route('products.index');
     }
 
@@ -131,7 +136,9 @@ class ProductsController extends Controller
     public function destroy(string $id)
     {
         Product::destroy($id);
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        session()->flash('error', 'Product deleted successfully!');
+
+        return redirect()->route('products.index');
     }
 
 }
