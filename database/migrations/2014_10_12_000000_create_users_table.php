@@ -9,11 +9,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id(); // Primary Key
-            $table->string('gender')->nullable();
+            $table->string('gender');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('address')->nullable();
+            $table->string('address');
+            $table->string('isAdmin')->default('0'); // Set default value to '0'
             $table->timestamps(); // Includes created_at and updated_at
         });
     }
