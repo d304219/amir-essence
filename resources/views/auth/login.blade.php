@@ -10,7 +10,7 @@
 
             <div class="form-group">
                 <label for="email">{{ __('Email Address') }}</label>
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <input placeholder="test@gmail.com" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 
                 @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -21,7 +21,7 @@
 
             <div class="form-group">
                 <label for="password">{{ __('Password') }}</label>
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                <input placeholder="testtest" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                 
                 @error('password')
                     <span class="invalid-feedback" role="alert">

@@ -17,7 +17,11 @@ use App\Http\Controllers\ProductsController;
 */
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('home');
+});
+
+Route::get('home', function () {
+    return view('home');
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
