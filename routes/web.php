@@ -24,9 +24,10 @@ Route::get('home', function () {
     return view('home');
 });
 
-Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], function () {
     Route::resource('products', ProductsController::class);
 });
+
 
 Route::get('/perfumes', [ProductsController::class, 'products'])->name('product');
 
