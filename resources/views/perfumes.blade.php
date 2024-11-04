@@ -32,7 +32,7 @@
                             <div class="volume-tag">
                                 {{ $product['volume'] }} ml
                             </div>
-                            <img src="img/{{ $product['img_file'] }}" alt="{{ $product['name'] }}">
+                            <img src="{{ $product['img_file'] }}" alt="{{ $product['name'] }}">
                         </div>
                         <h3>{{ $product['name'] }}</h3>
                         <p>{{ $product['description'] }}</p>
