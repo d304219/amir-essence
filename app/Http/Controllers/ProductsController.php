@@ -59,15 +59,14 @@ class ProductsController extends Controller
 
         // Handling image upload
         if ($request->hasFile('img_file')) {
-            $imageName = time().'.'.$request->img_file->extension();
-            $request->img_file->storeAs('public', $imageName);
-            $product->img_file = $imageName;
+            $image = $request->file('img_file');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img/products'), $imageName);
+            $product->img_file = 'img/products/' . $imageName; // Save the path in the database
         }
 
         $product->save();
-
         session()->flash('success', 'Product created successfully!');
-
         return redirect()->route('products.index');
     
     }
@@ -106,8 +105,11 @@ class ProductsController extends Controller
             'category_id' => 'required|exists:categories,id',
             'img_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-
+    
+        // Find the product by ID
         $product = Product::findOrFail($id);
+        
+        // Update product details
         $product->name = $request->name;
         $product->price = $request->price;
         $product->quantity = $request->quantity;
@@ -115,20 +117,29 @@ class ProductsController extends Controller
         $product->description = $request->description;
         $product->ingredients = $request->ingredients;
         $product->category_id = $request->category_id;
-
+    
         // Handling image upload
         if ($request->hasFile('img_file')) {
-            $imageName = time().'.'.$request->img_file->extension();
-            $request->img_file->storeAs('public', $imageName);
-            $product->img_file = $imageName;
+            // Generate a unique name for the image
+            $imageName = time() . '.' . $request->img_file->extension();
+            
+            // Store the image in the 'img/products' directory
+            $request->img_file->move(public_path('img/products'), $imageName);
+            
+            // Update the product's image file path
+            $product->img_file = 'img/products/' . $imageName;
         }
-
+    
+        // Save the updated product details
         $product->save();
-
+    
+        // Flash a success message to the session
         session()->flash('info', 'Product updated successfully!');
-
+    
+        // Redirect back to the products index page
         return redirect()->route('products.index');
     }
+    
 
     /**
      * Remove the specified resource from storage.

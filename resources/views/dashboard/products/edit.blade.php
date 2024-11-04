@@ -92,7 +92,7 @@
                 @if($product->img_file)
                     <div class="text-center">
                         <p>Current Image:</p>
-                        <img src="{{ asset('img/' . $product->img_file) }}" alt="{{ $product->name }}" class="img-fluid" style="max-width: 100%; border: 1px solid #ddd; padding: 5px;">
+                        <img src="{{ asset($product->img_file) }}" alt="{{ $product->name }}" class="img-fluid" style="max-width: 100%; border: 1px solid #ddd; padding: 5px;">
                     </div>
                 @endif
             </div>

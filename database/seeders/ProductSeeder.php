@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
         $product->volume = 100; // in ml
         $product->description = "A luxurious oud fragrance with a royal touch, perfect for evening wear.";
         $product->ingredients = "Oud, sandalwood, amber, musk";
-        $product->img_file = "perfume-mockup.png";
+        $product->img_file = "img/products/1730725032.png";
         $product->category_id = 1; // Set category_id to match the ID of "Royal Oud" category
         $product->save();
 
@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
         $product->volume = 80;
         $product->description = "A floral musk fragrance with the essence of pure roses and musk.";
         $product->ingredients = "Rose, Musk, Vanilla";
-        $product->img_file = "perfume-mockup.png";
+        $product->img_file = "img/products/1730725032.png";
         $product->category_id = 2;
         $product->save();
 
@@ -42,7 +42,7 @@ class ProductSeeder extends Seeder
         $product->volume = 50;
         $product->description = "A sweet and woody fragrance inspired by traditional bakhoor incense.";
         $product->ingredients = "Bakhoor, Oud, Cedar";
-        $product->img_file = "perfume-mockup.png";
+        $product->img_file = "img/products/1730725032.png";
         $product->category_id = 1;
         $product->save();
 
@@ -54,7 +54,7 @@ class ProductSeeder extends Seeder
         $product->volume = 30;
         $product->description = "A pure white musk fragrance, clean and comforting.";
         $product->ingredients = "White Musk, Floral Notes";
-        $product->img_file = "perfume-mockup.png";
+        $product->img_file = "img/products/1730725032.png";
         $product->category_id = 2;
         $product->save();
 
@@ -66,7 +66,7 @@ class ProductSeeder extends Seeder
         $product->volume = 90;
         $product->description = "A rich amber fragrance blended with oud, for a luxurious experience.";
         $product->ingredients = "Amber, Oud, Patchouli";
-        $product->img_file = "perfume-mockup.png";
+        $product->img_file = "img/products/1730725032.png";
         $product->category_id = 3;
         $product->save();
 
@@ -79,7 +79,7 @@ class ProductSeeder extends Seeder
         $product->volume = 75;
         $product->description = "Warm sandalwood fragrance with earthy undertones.";
         $product->ingredients = "Sandalwood, Cedar, Musk";
-        $product->img_file = "perfume-mockup.png";
+        $product->img_file = "img/products/1730725032.png";
         $product->category_id = 3;
         $product->save();
 
