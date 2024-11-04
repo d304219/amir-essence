@@ -11,7 +11,7 @@
     <div class="product-page">
         <div class="product-img">
             @if($product->img_file)
-                <img src="{{ asset('img/' . $product->img_file) }}" alt="{{ $product->name }}" class="img-fluid">
+                <img src="{{ asset($product->img_file) }}" alt="{{ $product->name }}" class="img-fluid">
             @else
                 <p><strong>Image:</strong> No image available</p>
             @endif
