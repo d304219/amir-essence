@@ -51,7 +51,7 @@
         @endguest
 
         <!-- Cart Icon -->
-        <a href="#cart">
+        <a href="/cart">
             <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
         </a>
     </div>
