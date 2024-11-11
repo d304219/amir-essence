@@ -3,7 +3,6 @@
 @section('content')
 <div class="wrapper">
     @guest
-        <!-- Show login prompt if the user is not logged in -->
         <div class="cart-login-prompt">
             <h1>Please log in to view your cart</h1>
             <a href="{{ route('login') }}" class="btn">Log in</a>
@@ -16,30 +15,39 @@
         </div>
 
         <div class="cart-content">
-            <!-- Check if there are items in the cart -->
-            @if(session()->has('cart') && count(session('cart')) > 0)
-                <!-- Cart Items Section -->
+            @if(count($cart) > 0)
                 <div class="cart-items">
-                    @foreach($cart as $product)
-                    <div class="cart-item">
-                        <div class="cart-item-details">
-                            <h2>{{ $product['name'] }}</h2>
-                            <p class="item-price">{{ number_format($product['price'], 2) }}€</p>
-                            <div class="quantity-control">
-                                <button class="quantity-btn">-</button>
-                                <span style="display: flex; align-items: center;" class="quantity">{{ $product['quantity'] }}</span>
-                                <button class="quantity-btn">+</button>
+                    @foreach($cart as $productId => $product)
+                        <div class="cart-item">
+                            <div class="cart-item-details">
+                                <h2>{{ $product['name'] }}</h2>
+                                <p>Volume: {{ $product['volume'] }} ml / {{ round($product['volume'] / 29.574, 1) }} oz</p>
+                                <p class="item-price">{{ number_format($product['price'], 2) }}€</p>
+
+                                <div class="quantity-control">
+                                    <form action="{{ route('cart.update') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $productId }}">
+                                        <input type="hidden" name="quantity" value="{{ $product['quantity'] - 1 }}">
+                                        <button type="submit" class="quantity-btn">-</button>
+                                    </form>
+
+                                    <span class="quantity">{{ $product['quantity'] }}</span>
+
+                                    <form action="{{ route('cart.update') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $productId }}">
+                                        <input type="hidden" name="quantity" value="{{ $product['quantity'] + 1 }}">
+                                        <button type="submit" class="quantity-btn">+</button>
+                                    </form>
+                                </div>
                             </div>
+
+                            <img src="{{ asset($product['image']) }}" alt="Product Image" class="cart-item-image">
                         </div>
-                
-                        {{-- Display product image --}}
-                        <img src="{{ asset($product['img_file']) }}" alt="Product Image" class="cart-item-image">
-                    </div>
-                @endforeach
-                
+                    @endforeach
                 </div>
 
-                <!-- Order Summary Section -->
                 <div class="order-summary">
                     <h3>Order Summary</h3>
                     <div class="summary-details">
@@ -59,15 +67,13 @@
                     </div>
                 </div>
                 
-                </div>
             @else
-                <!-- Show empty cart message if there are no items -->
                 <div class="empty-cart">
                     <p>Your shopping cart is empty.</p>
                 </div>
             @endif
         </div>
+        
     @endauth
 </div>
-
 @endsection
