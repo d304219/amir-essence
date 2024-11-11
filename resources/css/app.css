@@ -178,6 +178,7 @@ align-items: center;
     font-size: 36px;
     color: #333;
     text-transform: uppercase;
+    margin-top: 10px;
 }
 
 .product-info {
@@ -220,8 +221,6 @@ align-items: center;
     width: 70%;
     height: auto;
     border-radius: 8px;
-    margin-bottom: 15px;
-
 }
 
 .product-img{
@@ -229,6 +228,7 @@ align-items: center;
     background-color: #e9e9e9;
     text-align: center;
     flex: 1;
+    border: 1px solid black;
 }
 
 .product-img img {
@@ -304,6 +304,10 @@ align-items: center;
     background: none;
     font-size: 20px;
     cursor: pointer;
+}
+
+.quantity{
+    align-self: center;
 }
 .btn {
     width: 100%;
@@ -626,3 +630,4 @@ footer {
         font-size: 24px;
         font-weight: bold;
     }
+
