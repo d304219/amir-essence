@@ -10,6 +10,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id(); // Primary Key
             $table->string('name')->unique();
+            $table->string('color')->nullable();
+            $table->string('font')->nullable();
             $table->timestamps();
 
         });
