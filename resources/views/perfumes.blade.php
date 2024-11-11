@@ -9,7 +9,7 @@
                 </nav>
         
                 <!-- Title and Product Count -->
-                <header class="page-header">
+                <div class="page-header">
                     <h1>Perfumes</h1>
                     <div class="product-info">
                         <span>{{ $products->count() }} PRODUCTS</span>
@@ -22,21 +22,21 @@
                             </select>
                         </div>
                     </div>
-                </header>
+                </div>
         
                 <!-- Products Grid -->
                 <div class="products-grid">
                     @foreach($products as $product)
-                    <div class="product-card" style="cursor: pointer;" onclick="window.location='{{ url('/perfumes/' . $product['id']) }}'">
+                    <div class="product-card" style="cursor: pointer;" onclick="window.location='{{ url('/perfumes/' . $product->id)}}'">
                         <div class="product-img">
                             <div class="volume-tag">
-                                {{ $product['volume'] }} ml
+                                {{ $product->volume}} ml
                             </div>
-                            <img src="{{ $product['img_file'] }}" alt="{{ $product['name'] }}">
+                            <img src="{{ $product->img_file}}" alt="{{ $product->name}}">
                         </div>
-                        <h3>{{ $product['name'] }}</h3>
-                        <p>{{ $product['description'] }}</p>
-                        <span class="price">€{{ $product['price'] }}</span>
+                        <h3>{{ $product->name}}</h3>
+                        <p>{{ $product->description}}</p>
+                        <span class="price">€{{ $product->price}}</span>
                     </div>
                     @endforeach
                 </div>
