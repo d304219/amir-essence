@@ -11,7 +11,7 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/perfumes">Perfumes</a></li>
-            <li><a href="#categories">Categories</a></li>
+            <li><a href="/categories">Categories</a></li>
             <li><a href="#about">About Us</a></li>
 
             <!-- Admin-only Dashboard link -->
