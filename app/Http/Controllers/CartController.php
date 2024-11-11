@@ -4,100 +4,128 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use App\Models\CartItem;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    // Add a product to the cart
     public function add(Request $request)
     {
-        // Validate request data
         $request->validate([
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1'
         ]);
 
-        // Get the product and requested quantity
-        $product = Product::find($request->product_id);
+        $product = Product::findOrFail($request->product_id);
         $quantity = $request->quantity;
 
-        // Retrieve current cart from session or create a new array if it doesn't exist
-        $cart = session()->get('cart', []);
-
-        // Check if the product is already in the cart
-        if (isset($cart[$product->id])) {
-            // Update the quantity if it already exists
-            $cart[$product->id]['quantity'] += $quantity;
+        // Check if the user is logged in
+        if (Auth::check()) {
+            $cartItem = CartItem::firstOrNew([
+                'user_id' => Auth::id(),
+                'product_id' => $product->id
+            ]);
+            $cartItem->quantity += $quantity;
+            $cartItem->save();
         } else {
-            // Add the new product to the cart
-            $cart[$product->id] = [
-                'name' => $product->name,
-                'price' => $product->price,
-                'quantity' => $quantity,
-                'image' => $product->img_file,
-                'volume' => $product->volume
-            ];
+            // Handle session cart for guest users
+            $cart = session()->get('cart', []);
+            if (isset($cart[$product->id])) {
+                $cart[$product->id]['quantity'] += $quantity;
+            } else {
+                $cart[$product->id] = [
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'quantity' => $quantity,
+                    'image' => $product->img_file,
+                    'volume' => $product->volume,
+                ];
+            }
+            session()->put('cart', $cart);
         }
 
-        // Update the cart in the session
-        session()->put('cart', $cart);
-
-        // Redirect back to the product page with success message
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
-    public function viewCart()
+    // View the cart
+    public function view()
     {
-        $cart = session()->get('cart', []);
-        $subtotal = 0;
-    
-        // Loop through the cart items to calculate subtotal
-        foreach ($cart as $productId => $cartItem) {
-            $product = Product::find($productId);
-            
-            if ($product) {
-                // Add image path to cart item for display purposes
-                $cart[$productId]['img_file'] = $product->img_file;
-                $cart[$productId]['name'] = $product->name;
-                $cart[$productId]['price'] = $product->price;
-    
-                // Calculate the item's total cost (price * quantity)
-                $itemTotal = $product->price * $cartItem['quantity'];
-                $subtotal += $itemTotal;
-    
-                // Store the item total in the cart for display
-                $cart[$productId]['item_total'] = $itemTotal;
+        $cart = [];
+
+        // Load the cart for authenticated users from the database
+        if (Auth::check()) {
+            $cartItems = CartItem::where('user_id', Auth::id())->with('product')->get();
+            foreach ($cartItems as $item) {
+                $cart[$item->product_id] = [
+                    'name' => $item->product->name,
+                    'price' => $item->product->price,
+                    'quantity' => $item->quantity,
+                    'image' => $item->product->img_file,
+                    'volume' => $item->product->volume,
+                ];
             }
+            session()->put('cart', $cart); // Update session to reflect database
+        } else {
+            // Use the session cart for guest users
+            $cart = session()->get('cart', []);
         }
-    
-        // Define additional costs
+
+        // Calculate totals
+        $subtotal = array_reduce($cart, function ($carry, $item) {
+            return $carry + ($item['price'] * $item['quantity']);
+        }, 0);
         $shipping = 8.95;
         $total = $subtotal + $shipping;
-    
-        // Pass updated cart, subtotal, and total to the view
+
         return view('cart.index', compact('cart', 'subtotal', 'total', 'shipping'));
     }
-    
-    
 
-    public function updateCart(Request $request)
+    // Update cart item quantity
+    public function update(Request $request)
     {
-        $cart = session()->get('cart');
-        foreach ($request->input('quantities') as $productId => $quantity) {
+        $productId = $request->input('product_id');
+        $newQuantity = $request->input('quantity');
+
+        if (Auth::check()) {
+            $cartItem = CartItem::where('user_id', Auth::id())->where('product_id', $productId)->first();
+            if ($cartItem) {
+                if ($newQuantity > 0) {
+                    $cartItem->quantity = $newQuantity;
+                    $cartItem->save();
+                } else {
+                    $cartItem->delete();
+                }
+            }
+        } else {
+            $cart = session()->get('cart', []);
             if (isset($cart[$productId])) {
-                $cart[$productId]['quantity'] = $quantity;
+                if ($newQuantity > 0) {
+                    $cart[$productId]['quantity'] = $newQuantity;
+                    session()->put('cart', $cart);
+                } else {
+                    unset($cart[$productId]);
+                    session()->put('cart', $cart);
+                }
             }
         }
-        session()->put('cart', $cart);
+
         return redirect()->back()->with('success', 'Cart updated!');
     }
 
-    public function removeFromCart($productId)
+    // Remove an item from the cart
+    public function remove($productId)
     {
-        $cart = session()->get('cart');
-        if (isset($cart[$productId])) {
-            unset($cart[$productId]);
-            session()->put('cart', $cart);
+        if (Auth::check()) {
+            CartItem::where('user_id', Auth::id())->where('product_id', $productId)->delete();
+        } else {
+            $cart = session()->get('cart', []);
+            if (isset($cart[$productId])) {
+                unset($cart[$productId]);
+                session()->put('cart', $cart);
+            }
         }
+
         return redirect()->back()->with('success', 'Product removed from cart!');
     }
 }
