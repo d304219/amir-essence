@@ -12,7 +12,7 @@ class ProductsController extends Controller
     public function products()
     {
         $products = Product::all();
-        return view('perfumes')->with('products', $products);
+        return view('products')->with('products', $products);
     }
     /**
      * Display a listing of the resource.
@@ -22,7 +22,14 @@ class ProductsController extends Controller
         $products = Product::all();
         return view('dashboard/products/index')->with('products', $products);    
     }
-
+    public function showCategoryProducts($id)
+    {
+        $category = Category::findOrFail($id); // Retrieve the category
+        $products = $category->products; // Assuming a 'products' relationship exists in the Category model
+    
+        return view('category.products', compact('category', 'products'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      */
