@@ -15,7 +15,7 @@
 
                 <div class="category-grid">
                     @foreach ($categories as $category)
-                    <div class="category-card" style="font-family: {{ $category->font }};">
+                    <div class="category-card" style="font-family: {{ $category->font }};" onclick="window.location='{{ url('/category/' . $category->id)}}'">
                         <h3>{{ $category->name }}</h3>
                     </div>
                     
@@ -27,9 +27,8 @@
         <style>
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 20px;
-    max-width: 1000px;
 }
 
 .category-card {
@@ -39,6 +38,7 @@
     border: 1px solid black;
     text-align: center;
     transition: transform 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 .category-card img {
@@ -49,7 +49,7 @@
 
 .category-card h3 {
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 1.5em;
     color: #333;
 }
 

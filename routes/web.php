@@ -29,6 +29,7 @@ Route::get('home', function () {
 // Dashboard for Admin with auth and admin middleware
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], function () {
     Route::resource('products', ProductsController::class);
+    Route::resource('categories', CategoriesController::class);
 });
 
 // Cart Routes
