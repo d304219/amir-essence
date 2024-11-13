@@ -3,6 +3,7 @@
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CartController;
 
@@ -30,6 +31,7 @@ Route::get('home', function () {
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], function () {
     Route::resource('products', ProductsController::class);
     Route::resource('categories', CategoriesController::class);
+    Route::resource('users', UsersController::class);
 });
 
 // Cart Routes
