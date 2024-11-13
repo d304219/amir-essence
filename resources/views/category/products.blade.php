@@ -5,12 +5,12 @@
         <div class="wrapper">
                 <!-- Breadcrumb -->
                 <nav class="breadcrumb">
-                    <a href="/">Home</a> &gt; <a href="perfumes">Perfumes</a>
+                    <a href="/">Home</a> &gt; <a href="/categories">Categories</a> &gt; <a href="/category/{{ $category->id}}">{{ $category->name}}</a>
                 </nav>
         
                 <!-- Title and Product Count -->
                 <div class="page-header">
-                    <h1>Perfumes</h1>
+                    <h1 style="font-family: {{$category->font}}">{{ $category->name}}</h1>
                     <div class="product-info">
                         <span>{{ $products->count() }} PRODUCTS</span>
                         <div class="sort">
@@ -32,7 +32,7 @@
                             <div class="volume-tag">
                                 {{ $product->volume}} ml
                             </div>
-                            <img src="{{ $product->img_file}}" alt="{{ $product->name}}">
+                            <img src="/{{ $product->img_file}}" alt="{{ $product->name}}">
                         </div>
                         <h3>{{ $product->name}}</h3>
                         <p>{{ $product->description}}</p>
