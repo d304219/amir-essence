@@ -20,7 +20,7 @@
             <h1>{{ $product->name }}</h1>
 
             <p class="price">€{{ $product->price }}</p>
-            <p><strong>Size:</strong> {{ $product->volume }} ml / {{ round($product->volume / 29.574, 1) }} oz </p>
+            <p><strong>Volume:</strong> {{ $product->volume }} ml / {{ round($product->volume / 29.574, 1) }} oz </p>
 
             <form action="{{ route('cart.add') }}" method="POST">
                 @csrf
