@@ -45,6 +45,8 @@ Route::get('/perfumes', [ProductsController::class, 'products'])->name('product'
 Route::get('/perfumes/{id}', [ProductsController::class, 'show'])->name('product.show');
 
 Route::get('/categories', [CategoriesController::class, 'categories'])->name('categories');
+Route::get('/category/{id}', [ProductsController::class, 'showCategoryProducts'])->name('category.products');
+
 
 
 // Authentication Routes
