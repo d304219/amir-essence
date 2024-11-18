@@ -27,7 +27,7 @@
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <div class="quantity-control">
                     <button class="quantity-btn" type="button" onclick="decreaseQuantity()">-</button>
-                    <input type="number" name="quantity" value="1" min="1" id="quantity-input">
+                    <input type="number" name="quantity" value="1" min="1" max="{{$product->quantity}}" id="quantity-input">
                     <button class="quantity-btn" type="button" onclick="increaseQuantity()">+</button>
                 </div>
                 <button type="submit" class="btn">Add to Cart</button>
