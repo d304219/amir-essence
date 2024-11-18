@@ -51,48 +51,38 @@
         @endguest
 
         <!-- Cart Icon -->
-        <a href="/cart">
+<!-- Cart Icon with Product Counter -->
+        <a href="/cart" class="cart-icon">
             <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
+            @if(isset($cartCount) && $cartCount > 0)
+                <span class="cart-counter">{{ $cartCount }}</span>
+            @endif
         </a>
+
+
     </div>
 </header>
 
 <style>
-    /* Style for the dropdown container */
-    .user-dropdown {
-        position: relative;
-        display: inline-block;
-    }
 
-    /* Hidden dropdown content */
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        right: 0;
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-        padding: 10px 0;
-        min-width: 120px;
-        z-index: 1;
-    }
 
-    /* Dropdown link styling */
-    .dropdown-menu a {
-        color: #333;
-        padding: 8px 16px;
-        display: block;
-        text-decoration: none;
-    }
+    .cart-icon {
+    position: relative;
+}
 
-    .dropdown-menu a:hover {
-        background-color: #f2f2f2;
-    }
+.cart-counter {
+    position: absolute;
+    top: -12px;
+    right: -14px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
 
-    #userIcon{
-        z-index: 100;
-    }
 </style>
 
 <script>// Toggle dropdown visibility on click

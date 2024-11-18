@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+
     // Add a product to the cart
     public function add(Request $request)
     {
