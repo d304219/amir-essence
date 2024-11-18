@@ -29,6 +29,15 @@ class ProductsController extends Controller
     
         return view('category.products', compact('category', 'products'));
     }
+
+    public function showLatestProducts()
+    {
+        // Fetch the latest 8 products from the database
+        $latestProducts = Product::orderBy('created_at', 'desc')->take(8)->get();
+
+        return view('home', compact('latestProducts'));
+    }
+
     
     /**
      * Show the form for creating a new resource.

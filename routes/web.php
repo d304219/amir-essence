@@ -27,6 +27,9 @@ Route::get('home', function () {
     return view('home');
 })->name('home');
 
+Route::get('/', [ProductsController::class, 'showLatestProducts']);
+Route::get('home', [ProductsController::class, 'showLatestProducts']);
+
 // Dashboard for Admin with auth and admin middleware
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], function () {
     Route::resource('products', ProductsController::class);
