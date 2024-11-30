@@ -63,6 +63,11 @@ align-items: center;
     color: #007bff;
 }
 
+.header-auth{
+    display: flex;
+    gap: 15px;
+}
+
 .header-icons {
     display: flex;
     align-items: center;
@@ -74,16 +79,73 @@ align-items: center;
     text-decoration: none;
     color: black;
 }
+.mobile-top{
+    display: none;
+}
 
 .icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     transition: transform 0.3s;
 }
 
 .icon:hover {
     transform: scale(1.1);
 }
+.cart-icon {
+    position: relative;
+}
+
+.cart-counter {
+    position: absolute;
+    top: -12px;
+    right: -14px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+    /* Style for the dropdown container */
+    .user-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Hidden dropdown content */
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+        min-width: 120px;
+        z-index: 1;
+    }
+
+    /* Dropdown link styling */
+    .dropdown-menu a {
+        color: #333;
+        padding: 8px 16px;
+        display: block;
+        text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f2f2f2;
+    }
+
+    #userIcon{
+        z-index: 100;
+    }
+
+
 
 /* Hero Section */
 .hero {
@@ -211,6 +273,12 @@ align-items: center;
     gap: 40px;
 }
 
+.best-sellers{
+    display: flex;
+    flex-direction: column;
+
+}
+
 .product-card {
     border-radius: 8px;
     position: relative;
@@ -277,6 +345,7 @@ align-items: center;
 }
 
 .quantity-control {
+    width: 100%;
     display: flex;
     margin: 10px 0;
     gap: 20px;
@@ -309,6 +378,10 @@ align-items: center;
 .quantity{
     align-self: center;
 }
+
+#quantity-input{
+    width: 100%;
+}
 .btn {
     width: 100%;
     padding: 12px 15px;
@@ -324,8 +397,30 @@ align-items: center;
 }
 
 .btn:hover {
-    background-color: #fff;
-    color: #000;}
+    background-color: #ffffff00;
+    color: #000;
+}
+
+.view-btn {
+    display: inline-block;
+    margin: 20px auto 0;
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+.view-btn:hover {
+background-color: #ffffff00;
+color: #000;
+}
 
 .shipping-info {
     color: red;
@@ -351,7 +446,7 @@ align-items: center;
     align-items: flex-start;
 }
 
-/* Best Seller Badge */
+/* Volume tag */
 .volume-tag {
     position: absolute;
     top: 10px;
@@ -363,6 +458,7 @@ align-items: center;
     text-transform: uppercase;
     border-radius: 3px;
 }
+
 /* Footer */
 
 
@@ -424,6 +520,7 @@ footer {
 .social-icons a img {
     width: 24px;
     height: 24px;
+    color: white;
 }
 
 .footer-bottom {
@@ -589,6 +686,8 @@ footer {
         font-size: 20px;
         cursor: pointer;
     }
+
+
     .cart-item-image {
         width: 120px;
         height: auto;
@@ -629,5 +728,16 @@ footer {
         text-align: center;
         font-size: 24px;
         font-weight: bold;
+    }
+
+    .remove-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
 
