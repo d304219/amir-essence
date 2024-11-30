@@ -1,5 +1,13 @@
 <header>
     <nav class="navbar">
+        
+        <!-- Mobile menu toggle button -->
+        <div class="menu-toggle" id="menuToggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
         <!-- Logo on the left -->
         <div class="logo">
             <a href="/">
@@ -7,8 +15,21 @@
             </a>
         </div>
 
+
         <!-- Navigation in the center -->
-        <ul>
+        <ul id="menu">
+            <div class="mobile-top">
+                <div class="mobile-nav">
+                    <div class="hamburger-auth">
+                        <a href="/login">Login</a> /
+                        <a href="/register">Register</a>
+                    </div>
+                    <div id="menuClose" class="hamburger-close">
+                        <img src="img/icons/x-lg.svg" alt="">
+                    </div>
+                </div>
+            </div>
+
             <li><a href="/">Home</a></li>
             <li><a href="/perfumes">Perfumes</a></li>
             <li><a href="/categories">Categories</a></li>
@@ -26,79 +47,68 @@
     <!-- Icons on the right -->
     <div class="header-icons">
         @guest
+        <div class="header-auth">
             <!-- Show Login and Register for guests -->
             <a href="/login">Login</a>
             <a href="/register">Register</a>
+        </div>
         @else
             <!-- User dropdown for logged-in users -->
-        <div class="user-dropdown">
-            <a href="#" id="userIcon">
-                <i id="faUserIcon" class="fa-solid fa-user" style="color: #000000;"></i>
-            </a>
-            <div class="dropdown-menu" id="userDropdownMenu">
-                <a href="#">Profile</a>
-                <a href="#">Settings</a>
-                <a href="{{ route('logout') }}" 
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
+            <div class="user-dropdown">
+                <a href="#" id="userIcon">
+                    <img id="faUserIcon" class="icon" src="{{asset('img/icons/person.svg')}}">
                 </a>
+                <div class="dropdown-menu" id="userDropdownMenu">
+                    <a href="#">Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="{{ route('logout') }}" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                </div>
             </div>
-        </div>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         @endguest
 
         <!-- Cart Icon -->
-<!-- Cart Icon with Product Counter -->
         <a href="/cart" class="cart-icon">
-            <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
+            <img class="icon" src="{{asset('img/icons/cart.svg')}}">
             @if(isset($cartCount) && $cartCount > 0)
                 <span class="cart-counter">{{ $cartCount }}</span>
             @endif
         </a>
-
-
     </div>
 </header>
 
-<style>
-
-
-    .cart-icon {
-    position: relative;
-}
-
-.cart-counter {
-    position: absolute;
-    top: -12px;
-    right: -14px;
-    border: 1px solid black;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-</style>
 
 <script>// Toggle dropdown visibility on click
-    document.getElementById('faUserIcon').addEventListener('click', function(event) {
-        event.preventDefault();
-        const dropdown = document.getElementById('userDropdownMenu');
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    });
-    
-    // Hide dropdown when clicking outside of it
-    document.addEventListener('click', function(event) {
-        const dropdown = document.getElementById('userDropdownMenu');
-        const userIcon = document.getElementById('faUserIcon');
-        if (!dropdown.contains(event.target) && event.target !== userIcon) {
-            dropdown.style.display = 'none';
-        }
-    });
-    
+document.getElementById('faUserIcon')?.addEventListener('click', function (event) {
+    event.preventDefault();
+    const dropdown = this.nextElementSibling;
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+});
+
+// Hide dropdown when clicking outside of it
+document.addEventListener('click', function (event) {
+    const dropdown = document.querySelector('.dropdown-menu');
+    const userIcon = document.getElementById('faUserIcon');
+    if (dropdown && !dropdown.contains(event.target) && event.target !== userIcon) {
+        dropdown.style.display = 'none';
+    }
+});
+
+// Mobile menu toggle functionality
+document.getElementById('menuToggle').addEventListener('click', function () {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('show');
+});
+
+document.getElementById('menuClose').addEventListener('click', function () {
+    const menu = document.getElementById('menu');
+    menu.classList.remove('show'); // Removes the "show" class to close the menu
+});
 </script>
+
+    

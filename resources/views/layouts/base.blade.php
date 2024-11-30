@@ -10,7 +10,6 @@
     <title>Amir Essence</title>
     <link rel="icon" href="/img/logoLight-removebg.png">
 
-    <link href="/resources/css/app.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7fa65373f3.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +17,7 @@
 
     <!-- Scripts -->
     @vite('resources/css/app.css')
+    @vite('resources/css/media.css')
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 </head>
 <body>
