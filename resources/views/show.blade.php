@@ -4,7 +4,7 @@
 <div class="wrapper">
     <nav class="breadcrumb" style="margin-bottom: 40px">
         <a href="{{ url('/') }}">Home</a> &gt;
-        <a href="{{ url('/arabic-fragrances') }}">Arabic Fragrances</a> &gt;
+        <a href="{{ url('/perfumes') }}">Perfumes</a> &gt;
         <span>{{ $product->name }}</span>
     </nav>
 
