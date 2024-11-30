@@ -8,8 +8,13 @@
 <div class="wrapper">
 
     <div class="page-header">
-        <h1>Shopping Cart</h1>
+        <nav class="breadcrumb">
+            <a href="{{ url('/') }}">Home</a> &gt;
+            <a href="{{ url('/cart') }}">Shopping cart</a>
+            <h1>Shopping Cart</h1>
+        </nav>
     </div>
+
 
     <div class="cart-content">
 
@@ -42,7 +47,7 @@
                                 <form action="{{ route('cart.remove', ['productId' => $productId]) }}" method="POST" style="display: flex; justify-content: center;">
                                     @csrf
                                     <button type="submit" class="remove-btn">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <img class="icon" src="{{asset('img/icons/trash.svg')}}">
                                     </button>
                                 </form>
                             </div>
@@ -83,24 +88,4 @@
     </div>
 </div>
 
-<style>
-    .remove-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 5px;
-        text-align: center;
-    }
-
-    .remove-btn i {
-        font-size: 20px;
-        color: #555;
-        transition: transform 0.2s ease, color 0.2s ease;
-    }
-
-    .remove-btn:hover i {
-        color: #ff0000; 
-        transform: scale(1.2); 
-    }
-</style>
 @endsection
