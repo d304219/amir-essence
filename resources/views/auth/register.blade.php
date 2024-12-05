@@ -1,6 +1,12 @@
 @extends('layouts.base')
 
 @section('content')
+
+<!-- Account Creation Prompt -->
+<div class="prompt">
+    <p>⚠️ Creating an account is not possible.</p>
+</div>
+
 <div class="wrapper auth-wrapper">
     <div class="auth-card">
         <h2 class="auth-header">{{ __('Register') }}</h2>
@@ -19,7 +25,6 @@
                 @enderror
             </div>
 
-            
             <!-- New Gender Field -->
             <div class="form-group">
                 <label for="gender">{{ __('Gender') }}</label>
@@ -76,9 +81,27 @@
             </div>
 
 
-            <button type="submit" class="btn-primary">{{ __('Register') }}</button>
+            <button type="" class="btn-primary" disabled>{{ __('Register') }}</button>
         </form>
     </div>
 </div>
+<style>
+    .prompt {
+    background-color: #f8f8f8;
+    border: 1px solid #d1d1d1;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.prompt p {
+    margin: 0;
+    padding: 0;
+}
 
+</style>
 @endsection

@@ -13,14 +13,27 @@
                     <h1>Perfumes</h1>
                     <div class="product-info">
                         <span>{{ $products->count() }} PRODUCTS</span>
+                        
                         <div class="sort">
                             <label for="sort-options">Sort by:</label>
-                            <select id="sort-options">
-                                <option value="default">Sorting</option>
-                                <option value="price">Price</option>
-                                <option value="popularity">Popularity</option>
+                            <select id="sort-options" onchange="applySort()">
+                                <option value="default" {{ request('sort') === 'default' ? 'selected' : '' }}>Default</option>
+                                <option value="price_low_high" {{ request('sort') === 'price_low_high' ? 'selected' : '' }}>Price: Low to High</option>
+                                <option value="price_high_low" {{ request('sort') === 'price_high_low' ? 'selected' : '' }}>Price: High to Low</option>
+                                <option value="alphabet_az" {{ request('sort') === 'alphabet_az' ? 'selected' : '' }}>Alphabet: A-Z</option>
+                                <option value="alphabet_za" {{ request('sort') === 'alphabet_za' ? 'selected' : '' }}>Alphabet: Z-A</option>
                             </select>
                         </div>
+                        
+                        <script>
+                            function applySort() {
+                                const selectedSort = document.getElementById('sort-options').value;
+                                const urlParams = new URLSearchParams(window.location.search);
+                                urlParams.set('sort', selectedSort);
+                                window.location.search = urlParams.toString();
+                            }
+                        </script>
+                        
                     </div>
                 </div>
         

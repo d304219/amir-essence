@@ -27,6 +27,14 @@ Route::get('home', function () {
     return view('home');
 })->name('home');
 
+Route::get('about-us', function () {
+    return view('about');
+})->name('about');
+
+Route::get('contact', function () {
+    return view('contact');
+})->name('contact');
+
 Route::get('/', [ProductsController::class, 'showLatestProducts']);
 Route::get('home', [ProductsController::class, 'showLatestProducts']);
 

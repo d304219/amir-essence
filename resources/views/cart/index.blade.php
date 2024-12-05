@@ -11,7 +11,7 @@
         <nav class="breadcrumb">
             <a href="{{ url('/') }}">Home</a> &gt;
             <a href="{{ url('/cart') }}">Shopping cart</a>
-            <h1>Shopping Cart</h1>
+            <h1 style="margin-bottom: 0;">Shopping Cart</h1>
         </nav>
     </div>
 

@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+
         <h1>Dashboard</h1>
         <h2>Product Edit</h2>
 

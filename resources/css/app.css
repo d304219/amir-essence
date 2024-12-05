@@ -337,6 +337,13 @@ align-items: center;
     text-transform: uppercase;
 }
 
+.mobile-product-name-price{
+    display: none;
+    }
+
+    
+
+
 .price {
     font-size: 24px;
     font-weight: bold;
@@ -537,7 +544,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70vh;
+    min-height: 60vh;
 }
 
 /* Login Card */

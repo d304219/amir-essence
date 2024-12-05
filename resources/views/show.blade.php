@@ -9,6 +9,11 @@
     </nav>
 
     <div class="product-page">
+        <div class="mobile-product-name-price">
+            <h1>{{ $product->name }}</h1>
+
+            <p class="price">€{{ $product->price }}</p>
+        </div>
         <div class="product-img">
             @if($product->img_file)
                 <img src="{{ asset($product->img_file) }}" alt="{{ $product->name }}" class="img-fluid">
@@ -17,9 +22,11 @@
             @endif
         </div>
         <div class="product-details">
-            <h1>{{ $product->name }}</h1>
-
-            <p class="price">€{{ $product->price }}</p>
+            <div class="product-name-price">
+                <h1>{{ $product->name }}</h1>
+                <p class="price">€{{ $product->price }}</p>
+            </div>
+            
             <p><strong>Volume:</strong> {{ $product->volume }} ml / {{ round($product->volume / 29.574, 1) }} oz </p>
 
             <form action="{{ route('cart.add') }}" method="POST">

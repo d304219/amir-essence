@@ -9,9 +9,37 @@ use App\Models\Category;
 
 class ProductsController extends Controller
 {
-    public function products()
+    public function products(Request $request)
     {
+
         $products = Product::all();
+        $sort = $request->get('sort', 'default'); // Default sort option
+
+        // Start the query builder
+        $query = \App\Models\Product::query();
+    
+        // Apply sorting based on the selected option
+        switch ($sort) {
+            case 'price_low_high':
+                $query->orderBy('price', 'asc');
+                break;
+            case 'price_high_low':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'alphabet_az':
+                $query->orderBy('name', 'asc');
+                break;
+            case 'alphabet_za':
+                $query->orderBy('name', 'desc');
+                break;
+            default:
+                $query->orderBy('id', 'asc'); // Default sorting by ID
+                break;
+        }
+    
+        // Get the sorted products
+        $products = $query->get();
+    
         return view('products')->with('products', $products);
     }
     /**
@@ -22,10 +50,37 @@ class ProductsController extends Controller
         $products = Product::all();
         return view('dashboard/products/index')->with('products', $products);    
     }
-    public function showCategoryProducts($id)
+    public function showCategoryProducts(Request $request, $id)
     {
         $category = Category::findOrFail($id); // Retrieve the category
         $products = $category->products; // Assuming a 'products' relationship exists in the Category model
+        $sort = $request->get('sort', 'default'); // Default sort option
+
+        // Start the query builder
+        $query = \App\Models\Product::query();
+    
+        // Apply sorting based on the selected option
+        switch ($sort) {
+            case 'price_low_high':
+                $query->orderBy('price', 'asc');
+                break;
+            case 'price_high_low':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'alphabet_az':
+                $query->orderBy('name', 'asc');
+                break;
+            case 'alphabet_za':
+                $query->orderBy('name', 'desc');
+                break;
+            default:
+                $query->orderBy('id', 'asc'); // Default sorting by ID
+                break;
+        }
+    
+        // Get the sorted products
+        $products = $query->get();
+    
     
         return view('category.products', compact('category', 'products'));
     }
